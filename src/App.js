@@ -8,23 +8,18 @@ import { connect } from "react-redux";
 
 function App(props) {
   useEffect(async () => {
-    await props.firstAction();
+    await dispatch(firstAction());
   }, []);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>test {props.firstState[0].gender}</p>
+        <p>test {state.gender}</p>
       </header>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    firstState: state.firstState,
-  };
-};
-export default connect(mapStateToProps, {
-  firstAction,
-})(App);
+export default App;
