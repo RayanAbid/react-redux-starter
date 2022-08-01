@@ -9,7 +9,7 @@ export const firstAction = (data) => async (dispatch) => {
     .then((result) => {
       dispatch({
         type: "firstAction",
-        data: result.results,
+        data: result.results[0],
       });
     })
     .catch((error) => console.log("error", error));
