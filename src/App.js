@@ -4,19 +4,21 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { firstAction } from "./redux/action";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-function App(props) {
+function App() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  // To fetch data when component mounts.
   useEffect(async () => {
     await dispatch(firstAction());
   }, []);
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>test {state.gender}</p>
+        <p>test {state.firstState.gender}</p>
       </header>
     </div>
   );
